@@ -1,11 +1,12 @@
-CREATE TABLE `calling_codes` (
-  `prefix` int(3) unsigned NOT NULL,
-  `territory` char(2) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `comment` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `mobile`  int(1) unsigned NOT NULL,
-  PRIMARY KEY (`prefix`),
-  KEY `territory_idx` (`territory`)
+CREATE TABLE calling_codes (
+  prefix int NOT NULL,
+  territory char(2)    DEFAULT NULL,
+  comment varchar(255) NOT NULL,
+  mobile  int NOT NULL DEFAULT 0,
+  PRIMARY KEY (prefix)
 );
+CREATE INDEX territory_idx ON calling_codes (territory);
+
 INSERT INTO calling_codes (prefix,territory,comment, mobile) VALUES
 (1403, 'CA', 'Alberta, Canada',0),
 (1587, 'CA', 'Alberta, Canada',0),
